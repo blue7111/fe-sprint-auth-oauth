@@ -29,9 +29,10 @@ app.post('/callback', controllers.callback);
 app.post('/userinfo', controllers.userInfo);
 app.delete('/logout', controllers.logout);
 
-// 인증서 파일들이 존재하는 경우에만 https 프로토콜을 사용하는 서버를 실행합니다.
-// 만약 인증서 파일이 존재하지 않는경우, http 프로토콜을 사용하는 서버를 실행합니다.
-// 파일 존재여부를 확인하는 폴더는 package.json이 위치한 server 폴더입니다.
+// (Optional) https 서버를 실행합니다.
+// 아래 코드는 인증서 파일이 존재하지 않는 경우에는 http 서버를, 존재하는 경우에는 https 서버를 실행합니다.
+// OAuth 과제도 앞서 진행한 과제들과 마찬가지로 https 서버가 꼭 필요한 것은 아닙니다.
+// https 프로토콜을 사용하는 서버를 실행해보고 싶다면, mkcert를 사용해 인증서 파일을 server 폴더 안에 만들어주세요.
 let server;
 if (fs.existsSync('./key.pem') && fs.existsSync('./cert.pem')) {
   const privateKey = fs.readFileSync(__dirname + '/key.pem', 'utf8');

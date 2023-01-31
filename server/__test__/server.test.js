@@ -39,11 +39,6 @@ describe('.env', () => {
 });
 
 describe('Auth - Server', () => {
-  describe('Protocol - HTTP over Secure', () => {
-    it('🚩 HTTPS 프로토콜을 사용하는 서버여야 합니다.', () => {
-      expect(app instanceof https.Server).to.equal(true);
-    });
-  });
 
   describe('controller/callback.js', () => {
     it('authorization callback에 대한 handler에서는 GitHub Access Token 요청을 처리할 수 있어야 합니다.', async () => {
